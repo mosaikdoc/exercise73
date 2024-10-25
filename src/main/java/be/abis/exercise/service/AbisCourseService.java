@@ -25,8 +25,13 @@ public class AbisCourseService implements CourseService {
     }
 
     @Override
-    public Course findCourseByShortTitle(String shortTitle) {
+    public List<Course> findCourseByShortTitle(String shortTitle) {
         return cr.findCourseByShortTitle(shortTitle);
+    }
+
+    @Override
+    public List<Course> findCourseByNumberOfDays(int numberOfDays) {
+        return cr.findCourseByNumberOfDays(numberOfDays);
     }
 
     @Override

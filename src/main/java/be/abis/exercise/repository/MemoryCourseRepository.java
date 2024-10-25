@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 public class MemoryCourseRepository implements CourseRepository {
@@ -38,8 +39,14 @@ public class MemoryCourseRepository implements CourseRepository {
 	}
 
 	@Override
-	public Course findCourseByShortTitle(String shortTitle) {
-		return courses.stream().filter(c->c.getShortTitle().equalsIgnoreCase(shortTitle)).findFirst().orElse(null);
+	public List<Course> findCourseByShortTitle(String shortTitle) {
+//		return courses.stream().filter(c->c.getShortTitle().equalsIgnoreCase(shortTitle)).findFirst().orElse(null);
+		return courses.stream().filter(c->c.getShortTitle().equalsIgnoreCase(shortTitle)).collect(Collectors.toList());
+	}
+
+	@Override
+	public List<Course> findCourseByNumberOfDays(int numberOfDays) {
+		return courses.stream().filter(c-> c.getNumberOfDays() == numberOfDays).collect(Collectors.toList());
 	}
 
 	@Override

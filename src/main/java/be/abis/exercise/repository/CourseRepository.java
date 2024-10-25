@@ -9,8 +9,8 @@ public interface CourseRepository {
 
 	List<Course> findAllCourses();
 	Course findCourseById(int id);
-	Course findCourseByShortTitle(String shortTitle);
-
+	List<Course> findCourseByShortTitle(String shortTitle);
+	List<Course> findCourseByNumberOfDays(int numberOfDays);
 	void addCourse(Course c);
 	void updateCourse(Course c);
 	void deleteCourse(int id);
